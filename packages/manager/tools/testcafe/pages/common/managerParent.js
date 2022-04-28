@@ -9,6 +9,28 @@ export default class ManagerParentPage {
     this.elementDisplayedOnPage = Selector(
       `[data-navi-id="${elementDisplayedOnPage}"]`,
     );
+    this.iframeSelector = Selector('[id="privacy-iframe"]');
+    this.cookieButtonAccept = Selector('.cookie-policy-modal').find(
+      '[variant="primary"]',
+    );
+  }
+
+  async removeCookieMsg() {
+    try {
+      await this.cookieButtonAccept.with({ visibilityCheck: true })();
+      if (await this.iframeSelector.exists) {
+        await t.expect(this.iframeSelector.visible).ok();
+        await t.switchToIframe(this.iframeSelector);
+        await t.expect(this.cookieButtonAccept.visible).ok();
+        await t.click(this.cookieButtonAccept);
+        await t.switchToMainWindow();
+      }
+      if (await this.cookieButtonAccept.exists) {
+        await t.click(this.cookieButtonAccept);
+      }
+    } catch (error) {
+      throw new Error("The cookie acceptance modal wasn't found.");
+    }
   }
 
   async confirmCurrentPage() {

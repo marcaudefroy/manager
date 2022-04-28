@@ -14,7 +14,7 @@ fixture('check hub page')
     severity: 'critical',
     priority: 'high',
     scope: 'hub',
-  })
+  }) // f
   .page(config.baseUrl)
   .beforeEach(async (t) => {
     await t.useRole(user);
@@ -24,6 +24,7 @@ fixture('check hub page')
 test(`confirm ${config.dataset.hubProduct} dropdown actions urls`, async () => {
   const hubPage = new HubPage();
   await hubPage.confirmCurrentPage();
+  await hubPage.removeCookieMsg();
   await hubPage.dropdownProductAutomaticRenew(config.dataset.hubProduct);
 }).after(async () => {
   await userRoleDisconnect(config);

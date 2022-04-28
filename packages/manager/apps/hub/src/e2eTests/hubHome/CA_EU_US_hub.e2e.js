@@ -33,6 +33,7 @@ test('it should access to Manager Hub', async (t) => {
 test('confirm link to all orders list', async () => {
   const hubPage = new HubPage();
   await hubPage.confirmCurrentPage();
+  await hubPage.removeCookieMsg();
   await hubPage.confirmOrdersListLink();
 });
 

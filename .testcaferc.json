@@ -19,9 +19,19 @@
   ],
   "screenshots": {
     "path": "./reports/screenshots/",
-    "pathPattern": "${TEST_ID}/${FILE_INDEX}.png",
+    "pathPattern": "test-${TEST_INDEX}-${QUARANTINE_ATTEMPT}/${FILE_INDEX}.png",
     "takeOnFails": true,
     "fullPage": true
+  },
+  "videoPath": "./reports/videos/",
+  "videoOptions": {
+    "singleFile": false,
+    "failedOnly": true,
+    "pathPattern": "test-${FIXTURE}/name-${TEST}.mp4"
+  },
+  "videoEncodingOptions": {
+    "r": 20,
+    "aspect": "4:3"
   },
   "quarantineMode": false,
   "debugMode": false,

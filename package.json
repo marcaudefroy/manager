@@ -41,6 +41,7 @@
     "test:e2e:firefox": "rimraf ./reports && testcafe firefox",
     "test:e2e:firefox:headless": "rimraf ./reports && testcafe firefox:headless",
     "gherkin:chromium": "rimraf ./reports && gherkin-testcafe chromium feature/**/*.js feature/**/*.feature",
+    "gherkin:chromium:path": "rimraf ./reports && gherkin-testcafe 'chromium:emulation:width=1280;height=720' feature/**/*.js",
     "version": "conventional-changelog -p angular -i CHANGELOG.md -s && git add CHANGELOG.md"
   },
   "resolutions": {
@@ -50,6 +51,7 @@
     "@commitlint/cli": "^12.1.4",
     "@commitlint/config-angular": "^12.1.4",
     "@cucumber/cucumber": "^7.3.1",
+    "@ffmpeg-installer/ffmpeg": "^1.1.0",
     "@lerna/package-graph": "^3.18.5",
     "@lerna/project": "^3.21.0",
     "@ovh-ux/codename-generator": "^1.0.0",

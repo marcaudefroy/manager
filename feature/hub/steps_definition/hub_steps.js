@@ -1,7 +1,7 @@
 import { Given, When, Then } from '@cucumber/cucumber';
-import HubPage from '../../packages/manager/tools/testcafe/pages/hub/hubPage';
-import config from '../../packages/manager/tools/testcafe/config';
-import { userRole } from '../../packages/manager/tools/testcafe/roles';
+import HubPage from '../../../packages/manager/tools/testcafe/pages/hub/hubPage';
+import config from '../../../packages/manager/tools/testcafe/config';
+import { userRole } from '../../../packages/manager/tools/testcafe/roles';
 
 const hubPage = new HubPage();
 

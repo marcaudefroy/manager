@@ -6,10 +6,10 @@ import { Before, After } from '@cucumber/cucumber';
   logger,
 } from '@ovh-ux/testcafe-manager'; */
 
-import config from '../../packages/manager/tools/testcafe/config';
-import { userRoleDisconnect } from '../../packages/manager/tools/testcafe/roles';
-import { getNetworkLogs } from '../../packages/manager/tools/testcafe/utils/helpers';
-import logger from '../../packages/manager/tools/testcafe/utils/commonData';
+import config from '../../../packages/manager/tools/testcafe/config';
+import { userRoleDisconnect } from '../../../packages/manager/tools/testcafe/roles';
+import { getNetworkLogs } from '../../../packages/manager/tools/testcafe/utils/helpers';
+import logger from '../../../packages/manager/tools/testcafe/utils/commonData';
 
 // for each test in order to log networkcalls
 Before(async (t) => {

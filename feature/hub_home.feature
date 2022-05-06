@@ -9,6 +9,6 @@ Feature: manager hub home page
         When The User clicks on his product renewal dropdown button
         Then The User sees the renewal management options links
 
-      @EU @CA
+      @EU @CA @logout
       Scenario: confirm link to all orders list
         Then The User confirms the EU and CA available actions links are correct

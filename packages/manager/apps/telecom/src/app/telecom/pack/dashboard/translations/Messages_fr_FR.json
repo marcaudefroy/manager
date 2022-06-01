@@ -1,5 +1,6 @@
 {
   "pack_xdsl_page_title": "Pack \"{{name}}\"",
+  "pack_xdsl_sdsl_page_title": "Autres accès Internet",
   "pack_xdsl_service_list": "Gestion de votre pack {{packName}}",
   "pack_xdsl_service_more_one": "{{count}} supplémentaire",
   "pack_xdsl_service_more_many": "{{count}} supplémentaires",

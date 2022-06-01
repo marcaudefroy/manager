@@ -20,7 +20,6 @@ export default class PackCtrl {
     DASHBOARD,
     OvhApiPackXdsl,
     PACK,
-    resiliationNotification,
     SidebarMenu,
     TucToast,
     tucValidator,
@@ -32,7 +31,6 @@ export default class PackCtrl {
     this.DASHBOARD = DASHBOARD;
     this.PACK = PACK;
     this.OvhApiPackXdsl = OvhApiPackXdsl;
-    this.resiliationNotification = resiliationNotification;
     this.SidebarMenu = SidebarMenu;
     this.TucToast = TucToast;
     this.validator = tucValidator;

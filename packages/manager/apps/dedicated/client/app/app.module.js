@@ -86,7 +86,6 @@ import { serverBandwidth } from '@ovh-ux/manager-components';
 import ovhManagerCookiePolicy from '@ovh-ux/manager-cookie-policy';
 import ovhManagerBanner from '@ovh-ux/manager-banner';
 import ovhManagerBilling from '@ovh-ux/manager-billing';
-import ovhManagerEnterpriseCloudDatabase from '@ovh-ux/manager-enterprise-cloud-database';
 import ovhManagerDbaasLogs from '@ovh-ux/manager-dbaas-logs';
 import ovhManagerMfaEnrollment from '@ovh-ux/mfa-enrollment';
 import ovhManagerNasha from '@ovh-ux/manager-nasha';
@@ -230,7 +229,6 @@ export default async (containerEl, shellClient) => {
         ovhContacts,
         ovhManagerAnthos,
         ovhManagerBanner,
-        ovhManagerEnterpriseCloudDatabase,
         ovhManagerMetrics,
         ovhManagerNasha,
         ovhManagerNavbar,

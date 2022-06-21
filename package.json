@@ -14,6 +14,7 @@
   ],
   "scripts": {
     "build": "node scripts/build.js",
+    "run:container": "node scripts/launch-container.js",
     "clean": "lerna clean -y && yarn run clean:dist && rimraf node_modules",
     "clean:dist": "rimraf \"packages/**/dist?(-EU|-CA|-US)\"",
     "format": "run-p format:*",
@@ -58,6 +59,7 @@
     "babel-preset-react-app": "^10.0.0",
     "commander": "^6.0.0",
     "concat-stream": "^2.0.0",
+    "concurrently": "^7.2.2",
     "conventional-changelog-cli": "^2.0.25",
     "conventional-commits-parser": "^3.0.5",
     "conventional-recommended-bump": "^4.1.1",

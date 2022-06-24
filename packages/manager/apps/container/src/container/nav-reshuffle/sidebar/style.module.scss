@@ -14,6 +14,17 @@ $selected: #00185e;
   min-width: 20rem;
   color: white;
 
+  &_back_button {
+    all: unset;
+    font-weight: inherit;
+    font-size: inherit;
+    cursor: pointer;
+
+    &:focus {
+      outline: 3px dashed green;
+    }
+  }
+
   &_pci_refresh {
     line-height: 1rem;
     display: flex;
@@ -34,6 +45,7 @@ $selected: #00185e;
   &_menu {
     overflow-y: auto;
     flex: 1;
+    padding-top: 3px;
   }
 
   ul {
@@ -42,22 +54,35 @@ $selected: #00185e;
     list-style-type: none;
   }
 
+  &_menuentry {
+    all: unset;
+    color: white;
+    font-weight: 400;
+    display: inline-block;
+    width: 100%;
+
+    &:hover {
+      text-decoration: underline !important;
+    }
+    &:focus {
+      outline: 3px dashed green;
+    }
+  }
+
   li {
     padding-left: 1rem;
     padding-right: 1rem;
     line-height: 2.3rem;
     vertical-align: middle;
+    cursor: pointer;
 
     a {
-      color: white;
-      font-weight: 400;
-      display: inline-block;
-      width: 100%;
-      outline: none;
-    }
+      color: inherit;
 
-    a:hover {
-      text-decoration: underline !important;
+      &:hover,
+      &:focus-visible {
+        color: inherit;
+      }
     }
   }
 
@@ -68,6 +93,7 @@ $selected: #00185e;
     margin: 0;
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
+    padding-left: 1rem;
   }
   @media (max-width: $device-breakpoint-tablet-max-width) {
     &_logo {
@@ -88,7 +114,6 @@ $selected: #00185e;
       text-align: center;
       line-height: 2.5rem;
       border-radius: 0.5rem;
-      outline: none;
     }
 
     a:hover {

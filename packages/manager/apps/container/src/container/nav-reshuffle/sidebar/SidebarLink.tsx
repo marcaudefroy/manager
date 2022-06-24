@@ -56,6 +56,7 @@ const StaticLink: React.FC<ComponentProps<StaticLinkProps>> = ({
       target={node.isExternal ? '_blank' : '_top'}
       rel={node.isExternal ? 'noopener noreferrer' : ''}
       id={id}
+      className={style.sidebar_menuentry}
     >
       {t(node.translation)}
       {node.isExternal && (
@@ -88,7 +89,7 @@ const SidebarLink: React.FC<ComponentProps<SidebarLinkProps>> = ({
   node = {},
   linkParams = {},
   onClick = () => {},
-  id = '',
+  id = null,
 }: SidebarLinkProps): JSX.Element => {
   const { t } = useTranslation('sidebar');
 
@@ -101,7 +102,11 @@ const SidebarLink: React.FC<ComponentProps<SidebarLinkProps>> = ({
       id={id}
     />
   ) : (
-    <a onClick={onClick} id={id}>
+    <button
+      className={`${style.sidebar_menuentry} outline-border`}
+      onClick={onClick}
+      id={id}
+    >
       {t(node.translation)}
       {node.children ? (
         <span
@@ -118,7 +123,7 @@ const SidebarLink: React.FC<ComponentProps<SidebarLinkProps>> = ({
           {count}
         </span>
       )}
-    </a>
+    </button>
   );
 };
 

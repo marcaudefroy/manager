@@ -343,10 +343,16 @@ const Sidebar = (): JSX.Element => {
       };
 
       setMenuItems(
-        currentNavigationNode.children?.map((node: Node) => ({
-          node,
-          count: node.count === false ? node.count : countServices(count, node),
-        })),
+        currentNavigationNode.children
+          ?.map((node: Node) => ({
+            node,
+            count:
+              node.count === false ? node.count : countServices(count, node),
+          }))
+          .filter(
+            (menuItem: { node: Node; count: boolean | number }) =>
+              !shouldHideElement(menuItem.node, menuItem.count),
+          ),
       );
     }
   }, [
@@ -391,8 +397,8 @@ const Sidebar = (): JSX.Element => {
         </a>
       </div>
       {currentNavigationNode.id !== 'home' && (
-        <a
-          className={style.sidebar_back_btn}
+        <button
+          className={style.sidebar_back_button}
           onClick={() => setCurrentNavigationNode(currentNavigationNode.parent)}
         >
           <span
@@ -400,15 +406,12 @@ const Sidebar = (): JSX.Element => {
             aria-hidden="true"
           ></span>
           {t('sidebar_back')}
-        </a>
+        </button>
       )}
-      <div className={style.sidebar_menu}>
+      <h2>{t(currentNavigationNode.translation)}</h2>
+      <nav className={style.sidebar_menu}>
         {(servicesCount || betaVersion === 1) && (
-          <ul id="menu">
-            <li>
-              <h2>{t(currentNavigationNode.translation)}</h2>
-            </li>
-
+          <ul id="menu" role="tablist">
             {/^pci/.test(currentNavigationNode?.id) && (
               <li>
                 <ProjectSelector
@@ -461,7 +464,6 @@ const Sidebar = (): JSX.Element => {
                 )}
               </li>
             )}
-
             {menuItems?.map(({ node, count }) => (
               <li
                 key={node.id}
@@ -470,23 +472,22 @@ const Sidebar = (): JSX.Element => {
                   node === highlightedNode ? style.sidebar_selected : ''
                 }
               >
-                {!shouldHideElement(node, count) && (
-                  <SidebarLink
-                    node={node}
-                    count={count}
-                    linkParams={{
-                      projectId: selectedPciProject?.project_id,
-                    }}
-                    onClick={() => menuClickHandler(node)}
-                    id={node.idAttr}
-                  />
-                )}
+                <SidebarLink
+                  node={node}
+                  count={count}
+                  linkParams={{
+                    projectId: selectedPciProject?.project_id,
+                  }}
+                  onClick={() => menuClickHandler(node)}
+                  id={node.idAttr}
+                />
+
                 {node.separator && <hr />}
               </li>
             ))}
           </ul>
         )}
-      </div>
+      </nav>
 
       <Suspense fallback="">
         <Assistance containerURL={containerURL} />

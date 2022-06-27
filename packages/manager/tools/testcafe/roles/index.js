@@ -1,8 +1,8 @@
 import { Role } from 'testcafe';
 import AuthLoginPage from '../pages/auth/login';
 
-export function userRole(config, targetUrl) {
-  const page = new AuthLoginPage(config);
+export function userRole(config, targetUrl, user) {
+  const page = new AuthLoginPage(config, user);
   return Role(
     page.getLoginUrl(targetUrl),
     async () => {

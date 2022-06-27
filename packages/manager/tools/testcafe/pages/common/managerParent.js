@@ -10,9 +10,8 @@ export default class ManagerParentPage {
       `[data-navi-id="${elementDisplayedOnPage}"]`,
     );
     this.iframeSelector = Selector('[id="privacy-iframe"]');
-    this.cookieButtonAccept = Selector('.cookie-policy-modal').find(
-      '[variant="primary"]',
-    );
+    this.cookieButtonAccept = Selector('[data-navi-id="cookie-accept"]');
+    this.ouiMessage = Selector('.oui-message');
   }
 
   async removeCookieMsg() {
@@ -51,5 +50,19 @@ export default class ManagerParentPage {
       await t.click(this.logoutLink);
     }
     await t.expect(await Selector('#login-form').visible).ok();
+  }
+
+  async confirmSuccessMessageDisplay() {
+    const successAttribute = this.ouiMessage.find(
+      '[class="oui-message__body oui-message__body_success"]',
+    );
+    const alertMessageFallback = Selector('[data-ng-class="ovhAlertType"]');
+    if (await alertMessageFallback.exists) {
+      await t.expect(alertMessageFallback.visible).ok();
+    } else if (await successAttribute.exists) {
+      await t.expect(successAttribute.visible).ok();
+    } else {
+      throw new Error('no success message displayed!');
+    }
   }
 }

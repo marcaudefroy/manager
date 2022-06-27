@@ -15,10 +15,12 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "@cucumber/cucumber": "^7.3.2",
+    "@cucumber/cucumber": "^8.2.1",
     "dotenv": "^8.2.0",
     "fs-extra": "^10.1.0",
     "gherkin-testcafe": "^5.1.0",
+    "imap": "^0.8.19",
+    "mailparser": "^3.5.0",
     "testcafe": "1.18.2"
   },
   "devDependencies": {

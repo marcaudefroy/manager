@@ -40,8 +40,8 @@
     "test:e2e:chromium:headless": "rimraf ./reports && testcafe chromium:headless",
     "test:e2e:firefox": "rimraf ./reports && testcafe firefox",
     "test:e2e:firefox:headless": "rimraf ./reports && testcafe firefox:headless",
-    "gherkin:chromium": "rimraf ./reports && gherkin-testcafe chromium feature/**/*.js feature/**/*.feature",
-    "gherkin:chromium:path": "rimraf ./reports && gherkin-testcafe 'chromium:emulation:width=1280;height=720' feature/**/*.js",
+    "gherkin:chromium": "rimraf ./reports && gherkin-testcafe chromium feature/**/*.js feature/**/*.feature --reporter gtc-reporter-spec",
+    "gherkin:chromium:path": "rimraf ./reports && gherkin-testcafe 'chromium:emulation:width=1280;height=720' feature/**/*.js --reporter gtc-reporter-spec",
     "version": "conventional-changelog -p angular -i CHANGELOG.md -s && git add CHANGELOG.md"
   },
   "resolutions": {
@@ -50,7 +50,7 @@
   "devDependencies": {
     "@commitlint/cli": "^12.1.4",
     "@commitlint/config-angular": "^12.1.4",
-    "@cucumber/cucumber": "^7.3.1",
+    "@cucumber/cucumber": "^8.2.2",
     "@ffmpeg-installer/ffmpeg": "^1.1.0",
     "@lerna/package-graph": "^3.18.5",
     "@lerna/project": "^3.21.0",
@@ -76,7 +76,7 @@
     "eslint-plugin-prettier": "^3.1.1",
     "esm": "^3.2.25",
     "execa": "^2.0.5",
-    "gherkin-testcafe": "^5.2.0",
+    "gherkin-testcafe": "^5.4.3",
     "git-raw-commits": "^2.0.2",
     "git-url-parse": "^11.1.2",
     "htmlhint": "^0.15.1",

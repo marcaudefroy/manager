@@ -2,11 +2,17 @@ import { Selector, t } from 'testcafe';
 import { URL } from 'url';
 
 export default class AuthLoginPage {
-  constructor(config) {
+  constructor(
+    config,
+    user = {
+      userNic: config.auth.userNic,
+      userPass: config.auth.userPass,
+    },
+  ) {
     this.url = config.auth.url;
     this.baseUrl = config.baseUrl;
-    this.userNic = config.auth.userNic;
-    this.userPass = config.auth.userPass;
+    this.userNic = user.userNic;
+    this.userPass = user.userPass;
 
     const loginForm = Selector('#login-form');
     this.usernameInput = loginForm.find('input[type=text]');

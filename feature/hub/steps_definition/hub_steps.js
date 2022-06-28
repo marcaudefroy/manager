@@ -9,15 +9,16 @@ Given('The User access the manager home page', async (t) => {
   const targetUrl = `${config.baseUrl}/#/hub`;
   const user = userRole(config, targetUrl);
   await t.useRole(user);
-});
-
-When('The User clicks on his product renewal dropdown button', async () => {
   await hubPage.confirmCurrentPage();
   await hubPage.removeCookieMsg();
 });
 
+When('The User clicks on his product renewal dropdown button', async () => {
+  await hubPage.clickDropdownProductAutomaticRenew(config.dataset.hubProduct);
+});
+
 Then('The User sees the renewal management options links', async () => {
-  await hubPage.dropdownProductAutomaticRenew(config.dataset.hubProduct);
+  await hubPage.dropdownProductAutomaticRenewContent(config.dataset.hubProduct);
 });
 
 Then(

@@ -36,11 +36,11 @@
     "start": "node -r esm scripts/start-application.js",
     "test:jest": "jest --runInBand",
     "test": "yarn lint",
-    "test:e2e:chromium": "rimraf ./reports && testcafe chromium",
+    "test:e2e:chromium": "rimraf ./reports && testcafe 'chromium:emulation:width=1280;height=720'",
     "test:e2e:chromium:headless": "rimraf ./reports && testcafe chromium:headless",
     "test:e2e:firefox": "rimraf ./reports && testcafe firefox",
     "test:e2e:firefox:headless": "rimraf ./reports && testcafe firefox:headless",
-    "gherkin:chromium": "rimraf ./reports && gherkin-testcafe chromium feature/**/*.js feature/**/*.feature --reporter gtc-reporter-spec",
+    "gherkin:chromium": "rimraf ./reports && gherkin-testcafe 'chromium:emulation:width=1280;height=720' feature/**/*.js feature/**/*.feature --reporter gtc-reporter-spec",
     "gherkin:chromium:path": "rimraf ./reports && gherkin-testcafe 'chromium:emulation:width=1280;height=720' feature/**/*.js --reporter gtc-reporter-spec",
     "version": "conventional-changelog -p angular -i CHANGELOG.md -s && git add CHANGELOG.md"
   },

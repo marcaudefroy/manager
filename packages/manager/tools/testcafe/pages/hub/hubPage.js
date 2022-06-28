@@ -23,6 +23,12 @@ export default class HubPage extends ManagerParentPage {
     this.shortcuts = Selector(
       '[data-navi-id="account-sidebar-shortcuts-block"]',
     );
+    this.renewConfigurationLink = Selector(
+      '[data-navi-id="go-to-configure-renew"]',
+    );
+    this.anticipatePaymentLink = Selector(
+      '[data-navi-id="go-to-anticipate-payment"]',
+    );
   }
 
   async goToRenewPage() {
@@ -30,28 +36,31 @@ export default class HubPage extends ManagerParentPage {
     await t.click(goToRenewLink);
   }
 
-  async dropdownProductAutomaticRenew(product) {
+  async clickDropdownProductAutomaticRenew(product) {
     const productToSelect = this.paymentStatusBlock.find(
       `[data-navi-id="paymentStatus-${product}"]`,
     );
     const produtDropdown = Selector(
       `[data-navi-id="paymentStatus-${product}-dropdown"]`,
     );
-    const renewConfigurationLink = Selector(
-      '[data-navi-id="go-to-configure-renew"]',
-    ).getAttribute('href');
-    const anticipatePaymentLink = Selector(
-      '[data-navi-id="go-to-anticipate-payment"]',
-    ).getAttribute('href');
     await t.expect(productToSelect.visible).ok();
     await t.click(produtDropdown);
+  }
+
+  async dropdownProductAutomaticRenewContent(product) {
+    const renewConfigurationHref = this.renewConfigurationLink.getAttribute(
+      'href',
+    );
+    const anticipatePaymentHref = this.anticipatePaymentLink.getAttribute(
+      'href',
+    );
     await t
-      .expect(renewConfigurationLink)
+      .expect(renewConfigurationHref)
       .contains(
-        `/manager/dedicated/#/billing/autorenew/update?serviceId=${product}`,
+        `/manager/#/dedicated/billing/autorenew/update?serviceId=${product}`,
       );
     await t
-      .expect(anticipatePaymentLink)
+      .expect(anticipatePaymentHref)
       .contains(`/cgi-bin/order/renew.cgi?domainChooser=${product}`);
   }
 
@@ -63,7 +72,7 @@ export default class HubPage extends ManagerParentPage {
     const allOrdersListHref = this.allOrdersList.getAttribute('href');
     await t
       .expect(allOrdersListHref)
-      .contains('/manager/dedicated/#/billing/orders');
+      .contains('/manager/#/dedicated/#/billing/orders');
   }
 
   async goToDocs() {
@@ -80,7 +89,7 @@ export default class HubPage extends ManagerParentPage {
     const linkToBillsHref = this.linkToBills.getAttribute('href');
     await t
       .expect(linkToBillsHref)
-      .contains('manager/dedicated/#/billing/history');
+      .contains('manager/#/dedicated/billing/history');
   }
 
   async gotToProductsCatalog() {
@@ -95,5 +104,13 @@ export default class HubPage extends ManagerParentPage {
     const productBlock = Selector(`[data-navi-id="${type}-block"]`);
     const goToProductList = productBlock.find('button');
     await t.click(goToProductList);
+  }
+
+  // eslint-disable-next-line class-methods-use-this
+  async goToProductPage(product) {
+    const productSelector = Selector(
+      `[data-navi-id="paymentStatus-${product}"]`,
+    ).find('a');
+    await t.click(productSelector);
   }
 }

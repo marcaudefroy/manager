@@ -11,7 +11,11 @@ export default class ManagerParentPage {
     );
     this.iframeSelector = Selector('[id="privacy-iframe"]');
     this.cookieButtonAccept = Selector('[data-navi-id="cookie-accept"]');
+    this.cookieButtonRefuse = Selector(
+      '[class="deny oui-button oui-button_secondary"]',
+    );
     this.ouiMessage = Selector('.oui-message');
+    this.iframeContainer = Selector('[title="app"]');
   }
 
   async removeCookieMsg() {
@@ -30,6 +34,23 @@ export default class ManagerParentPage {
     } catch (error) {
       throw new Error("The cookie acceptance modal wasn't found.");
     }
+  }
+
+  async refuseCookies() {
+    if (await this.iframeSelector.exists) {
+      await t.expect(this.iframeSelector.visible).ok();
+      await t.switchToIframe(this.iframeSelector);
+      await t.expect(this.cookieButtonRefuse.visible).ok();
+      await t.click(this.cookieButtonRefuse);
+      await t.switchToMainWindow();
+    }
+    if (await this.cookieButtonRefuse.exists) {
+      await t.click(this.cookieButtonRefuse);
+    }
+  }
+
+  async iframeInContainer() {
+    await t.switchToIframe(this.iframeContainer);
   }
 
   async confirmCurrentPage() {

@@ -75,5 +75,6 @@
   "pci_databases_general_information_path_label": "Path",
   "pci_databases_general_information_reset_password": "Régénérer le mot de passe",
   "pci_databases_general_information_reset_password_success": "Le mot de passe de l'utilisateur {{ user }} a été régénéré avec succès : <code>{{ password }}</code>. Veuillez le noter car il ne pourra pas être récupéré par la suite.",
-  "pci_databases_general_information_reset_password_error": "Une erreur est survenue lors de la modification du mot de passe de l'utilisateur {{ user }} : {{ message }}."
+  "pci_databases_general_information_reset_password_error": "Une erreur est survenue lors de la modification du mot de passe de l'utilisateur {{ user }} : {{ message }}.",
+  "pci_databases_general_information_uri_network_info": "Votre service est configuré avec une connectivité <b>réseau privé</b>, cela signifie que seuls les services à l'intérieur de ce réseau vRack peuvent se connecter à votre base de données."
 }

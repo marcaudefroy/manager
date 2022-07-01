@@ -53,8 +53,11 @@ export default class ManagerParentPage {
     await t.switchToIframe(this.iframeContainer);
   }
 
+  async confirmCurrentPageDisplay() {
+    await t.expect(this.elementDisplayedOnPage.visible).ok();
+  }
+
   async confirmCurrentPage() {
-    await this.elementDisplayedOnPage.with({ visibilityCheck: true })();
     await t.expect(await getPageUrl()).contains(this.currentPageNameInUrl);
   }
 

@@ -85,8 +85,8 @@ export default class HubPage extends ManagerParentPage {
       .contains('manager/#/dedicated/billing/history');
   }
 
-  async gotToProductsCatalog() {
-    const catalogLink = this.shortcuts.find('a[href="#/hub/catalog"]');
+  static async gotToProductsCatalog() {
+    const catalogLink = Selector('a[href*="#/hub/catalog"]');
     await t.expect(catalogLink.visible).ok();
     await t.click(catalogLink);
   }

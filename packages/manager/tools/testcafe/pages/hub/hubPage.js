@@ -86,9 +86,7 @@ export default class HubPage extends ManagerParentPage {
   }
 
   async gotToProductsCatalog() {
-    const catalogLink = this.shortcuts.find(
-      'a[href="https://www.ovh.com/manager/#/hub/catalog"]',
-    );
+    const catalogLink = this.shortcuts.find('a[href="#/hub/catalog"]');
     await t.expect(catalogLink.visible).ok();
     await t.click(catalogLink);
   }

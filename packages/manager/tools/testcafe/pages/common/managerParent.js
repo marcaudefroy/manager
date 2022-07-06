@@ -2,13 +2,11 @@ import { Selector, t } from 'testcafe';
 import { getPageUrl } from '../../utils/helpers';
 
 export default class ManagerParentPage {
-  constructor({ currentPageNameInUrl, elementDisplayedOnPage } = {}) {
+  constructor({ currentPageNameInUrl, elementDisplayedOnPage = '' } = {}) {
     this.currentPageNameInUrl = currentPageNameInUrl;
     this.navbarUser = Selector('[data-navi-id="user-menu"]');
     this.logoutLink = Selector('[data-navi-id="logout"]');
-    this.elementDisplayedOnPage = Selector(
-      `[data-navi-id="${elementDisplayedOnPage}"]`,
-    );
+    this.elementDisplayedOnPage = Selector(elementDisplayedOnPage);
     this.iframeSelector = Selector('[id="privacy-iframe"]');
     this.cookieButtonAccept = Selector('[data-navi-id="cookie-accept"]');
     this.cookieButtonRefuse = Selector(

@@ -5,23 +5,16 @@ export default class HubPage extends ManagerParentPage {
   constructor() {
     super({
       currentPageNameInUrl: '/#/',
-      elementDisplayedOnPage: 'hub-welcome-title',
+      elementDisplayedOnPage: '[data-navi-id="hub-welcome-title"]',
     });
     this.paymentStatusBlock = Selector('[data-navi-id="paymentStatus-block"]');
     this.ordersBlock = Selector('[data-navi-id="lastOrder-block"]');
     this.allOrdersList = this.ordersBlock.find(
       '[data-navi-id="lastOrder-go-to-orders"]',
     );
-    this.helpBlock = Selector('[data-navi-id="help-block"]');
-    this.helpLink = this.helpBlock.find(
-      '[data-navi-id="helpBlock-link-to-guides"]',
-    );
     this.totalBills = Selector('[data-navi-id="totalBills-block"]');
     this.linkToBills = this.totalBills.find(
       '[data-navi-id="totalBills-go-to-bills"]',
-    );
-    this.shortcuts = Selector(
-      '[data-navi-id="account-sidebar-shortcuts-block"]',
     );
     this.renewConfigurationLink = Selector(
       '[data-navi-id="go-to-configure-renew"]',

@@ -5,7 +5,7 @@ export default class CatalogPage extends ManagerParentPage {
   constructor() {
     super({
       currentPageNameInUrl: 'catalog',
-      elementDisplayedOnPage: 'catalog-title',
+      elementDisplayedOnPage: '[data-navi-id="catalog-title"]',
     });
   }
 

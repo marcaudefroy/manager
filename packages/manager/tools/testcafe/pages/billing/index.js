@@ -1,11 +1,11 @@
 import AutoRenew from './autorenew';
-import BillsList from './bills';
+import BillsListPage from './bills';
 import OrdersList from './orders';
 
-export { AutoRenew, BillsList, OrdersList };
+export { AutoRenew, BillsListPage, OrdersList };
 
 export default {
   AutoRenew,
-  BillsList,
+  BillsListPage,
   OrdersList,
 };

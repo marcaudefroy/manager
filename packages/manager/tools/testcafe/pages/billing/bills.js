@@ -1,7 +1,10 @@
 import ManagerParentPage from '../common/managerParent';
 
-export default class BillsList extends ManagerParentPage {
+export default class BillsListPage extends ManagerParentPage {
   constructor() {
-    super({ currentPageNameInUrl: 'billing/history' });
+    super({
+      currentPageNameInUrl: 'billing/history',
+      elementDisplayedOnPage: '[id="dg-undefined"]',
+    });
   }
 }

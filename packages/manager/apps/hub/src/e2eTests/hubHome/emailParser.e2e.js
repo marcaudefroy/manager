@@ -18,14 +18,13 @@ fixture('check hub page')
   .beforeEach(async (t) => {
     const targetUrl = await getTerminateConfirmationLinkFromEmail();
     const user = userRole(config, targetUrl[0]);
-    console.log(targetUrl[0]);
     await t.useRole(user);
   });
 
 // The product must be in automatic renewal
 test('read my mail', async (t) => {
   const pciProjects = new PciAllProjectsPage();
-  await pciProjects.removeCookieMsg();
+  await pciProjects.acceptCookies();
   await t.debug();
 }).after(async () => {
   await userRoleDisconnect(config);

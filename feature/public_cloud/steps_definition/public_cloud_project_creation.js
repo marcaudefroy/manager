@@ -15,7 +15,7 @@ Given('The User access the manager public cloud projects page', async (t) => {
   const targetUrl = `${config.baseUrl}/public-cloud/#/pci/projects/`;
   const user = userRole(config, targetUrl, pciUser);
   await t.useRole(user);
-  await pciOnboarding.removeCookieMsg();
+  await pciOnboarding.acceptCookies();
 });
 
 Given(
@@ -24,7 +24,7 @@ Given(
     const targetUrl = `${config.baseUrl}/public-cloud/#/pci/projects/`;
     const user = userRole(config, targetUrl, pciUser);
     await t.useRole(user);
-    await pciOnboarding.removeCookieMsg();
+    await pciOnboarding.acceptCookies();
     await pciOnboarding.clickCreateNewProject();
   },
 );
@@ -35,7 +35,7 @@ Given(
     const targetUrl = `${config.baseUrl}/public-cloud/#/pci/projects/`;
     const user = userRole(config, targetUrl, pciUser);
     await t.useRole(user);
-    await pciOnboarding.removeCookieMsg();
+    await pciOnboarding.acceptCookies();
     await pciOnboarding.clickCreateNewProject();
     await pciOnboarding.clickContractCheckBox();
     await t.click(pciOnboarding.continueButton);
@@ -48,7 +48,7 @@ Given(
     const targetUrl = `${config.baseUrl}/public-cloud/#/pci/projects/?voucher=${pciVoucher}`;
     const user = userRole(config, targetUrl, pciUser);
     await t.useRole(user);
-    await pciOnboarding.removeCookieMsg();
+    await pciOnboarding.acceptCookies();
   },
 );
 

@@ -24,7 +24,7 @@ fixture('check hub page')
 test(`confirm ${config.dataset.hubProduct} dropdown actions urls`, async () => {
   const hubPage = new HubPage();
   await hubPage.confirmCurrentPage();
-  await hubPage.removeCookieMsg();
+  await hubPage.acceptCookies();
   await hubPage.dropdownProductAutomaticRenew(config.dataset.hubProduct);
 }).after(async () => {
   await userRoleDisconnect(config);

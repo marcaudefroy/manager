@@ -19,5 +19,5 @@ Given('The User access the termination page', async (t) => {
   const targetUrl = await getTerminateConfirmationLinkFromEmail();
   const user = userRole(config, targetUrl[0], pciUser);
   await t.useRole(user);
-  await pciProjects.removeCookieMsg();
+  await pciProjects.acceptCookies();
 });

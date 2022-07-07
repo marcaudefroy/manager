@@ -10,7 +10,7 @@ Given('The User access the manager home page', async (t) => {
   const user = userRole(config, targetUrl);
   await t.useRole(user);
   await hubPage.confirmCurrentPage();
-  await hubPage.removeCookieMsg();
+  await hubPage.acceptCookies();
 });
 
 When('The User clicks on his product renewal dropdown button', async () => {

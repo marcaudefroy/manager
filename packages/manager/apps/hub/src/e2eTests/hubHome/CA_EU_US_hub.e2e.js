@@ -5,7 +5,7 @@ import {
 } from '../../../../../tools/testcafe/roles';
 import navbar from '../../../../../tools/testcafe/pages/components/navbar';
 import HubPage from '../../../../../tools/testcafe/pages/hub/hubPage';
-import ServersListDashboard from '../../../../../tools/testcafe/pages/hub/dedicatedServerDashboard';
+import ServersListDashboard from '../../../../../tools/testcafe/pages/baremetal/dedicatedServer/dedicatedServerDashboard';
 
 const user = userRole(config);
 
@@ -33,7 +33,7 @@ test('it should access to Manager Hub', async (t) => {
 test('confirm link to all orders list', async () => {
   const hubPage = new HubPage();
   await hubPage.confirmCurrentPage();
-  await hubPage.removeCookieMsg();
+  await hubPage.acceptCookies();
   await hubPage.confirmOrdersListLink();
 });
 

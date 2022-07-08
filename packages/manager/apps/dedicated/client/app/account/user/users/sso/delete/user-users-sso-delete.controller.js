@@ -29,7 +29,7 @@ export default class UserAccountUsersSSODeleteCtrl {
       .catch((err) => {
         this.alerter.error(
           `${this.$translate.instant(
-            'user_users_connext_sso_delete_error_message',
+            'user_users_sso_delete_error_message',
           )} ${get(err, 'message', err)}`,
           'userUsers',
         );

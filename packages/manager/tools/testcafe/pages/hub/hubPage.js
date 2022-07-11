@@ -49,9 +49,7 @@ export default class HubPage extends ManagerParentPage {
     );
     await t
       .expect(renewConfigurationHref)
-      .contains(
-        `/manager/#/dedicated/billing/autorenew/update?serviceId=${product}`,
-      );
+      .contains(`/#/dedicated/billing/autorenew/update?serviceId=${product}`);
     await t
       .expect(anticipatePaymentHref)
       .contains(`/cgi-bin/order/renew.cgi?domainChooser=${product}`);
@@ -63,9 +61,7 @@ export default class HubPage extends ManagerParentPage {
 
   async confirmOrdersListLink() {
     const allOrdersListHref = this.allOrdersList.getAttribute('href');
-    await t
-      .expect(allOrdersListHref)
-      .contains('/manager/#/dedicated/#/billing/orders');
+    await t.expect(allOrdersListHref).contains('/#/dedicated/#/billing/orders');
   }
 
   async goToDocs() {
@@ -80,9 +76,7 @@ export default class HubPage extends ManagerParentPage {
 
   async confirmBillsLink() {
     const linkToBillsHref = this.linkToBills.getAttribute('href');
-    await t
-      .expect(linkToBillsHref)
-      .contains('manager/#/dedicated/billing/history');
+    await t.expect(linkToBillsHref).contains('/#/dedicated/billing/history');
   }
 
   static async gotToProductsCatalog() {

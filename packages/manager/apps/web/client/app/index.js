@@ -15,6 +15,8 @@ if (isTopLevelApplication()) {
     .catch(() => {});
 }
 
+// test
+
 useShellClient('web')
   .then((client) => {
     if (!isTopLevelApplication()) {

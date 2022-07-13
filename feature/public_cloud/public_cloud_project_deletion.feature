@@ -1,5 +1,5 @@
 @monitoring @pciTermination
-Feature: public cloud termination creation
+Feature: public cloud project termination
 
   @testPci
   Scenario: generate a termination request

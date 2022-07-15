@@ -16,7 +16,7 @@ import {
   GATEWAY_TRACKING_PREFIX,
   TRACKING_PREFIX_FORM_SUBMIT,
 } from './order.constants';
-import { setDefaultSelections } from '../../setStepperDefaults.utils';
+import { setDefaultSelections } from '../../../../components/project/stepper-defaults-selection/stepper-defaults-selection.utils';
 
 export default class AdditionalIpController {
   /* @ngInject */
@@ -66,7 +66,7 @@ export default class AdditionalIpController {
     };
     this.loadMessages();
     this.initIp();
-    setDefaultSelections(this, DEFAULTS_MODEL, this.loadingDefaultValues);
+    this.setDefaults();
   }
 
   static getMaximumQuantity(product) {
@@ -392,5 +392,14 @@ export default class AdditionalIpController {
 
   onGatewayModelSelection(gateway) {
     this.selectedGatewaySize = gateway;
+  }
+
+  setDefaults() {
+    this.loadingDefaultValues = true;
+    setDefaultSelections(this, DEFAULTS_MODEL, 'currentStep').finally(() => {
+      this.$timeout(() => {
+        this.loadingDefaultValues = false;
+      });
+    });
   }
 }

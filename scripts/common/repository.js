@@ -56,6 +56,7 @@ class MonoRepository {
   }
 
   static release(version, repos, dryRelease = false) {
+    console.log('here');
     const commitMsg = repos
       .map((r) => `* Package ${r.name} ${r.getPackageJson().version}`)
       .join('\n');

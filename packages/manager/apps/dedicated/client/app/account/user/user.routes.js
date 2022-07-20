@@ -1,5 +1,6 @@
 import { SupportLevel } from '@ovh-ux/manager-models';
 import { API_MODEL_SUPPORT_LEVEL } from './support-level/support-level.constants';
+import { GUIDES_LIST } from './user.constants';
 
 import template from './user.html';
 import controller from './user.controller';
@@ -28,6 +29,23 @@ export default /* @ngInject */ ($stateProvider) => {
           : Promise.resolve(null),
       breadcrumb: /* @ngInject */ ($translate) =>
         $translate.instant('user_account'),
+
+      guides: /* @ngInject */ (currentUser) => {
+        Object.entries(GUIDES_LIST).forEach(([key, value]) => {
+          GUIDES_LIST[key].url =
+            typeof value.url === 'object'
+              ? value.url[currentUser.ovhSubsidiary] || value.url.DEFAULT
+              : value.url;
+        });
+        return GUIDES_LIST;
+      },
+
+      trackClick: /* @ngInject */ (atInternet) => (hit) => {
+        return atInternet.trackClick({
+          name: hit,
+          type: 'action',
+        });
+      },
     },
   });
 };

@@ -1,9 +1,9 @@
 import React from 'react';
+import { createRoot } from 'react-dom/client';
 
 import { initShell } from '@ovh-ux/shell';
 import i18n from 'i18next';
 import Backend from 'i18next-http-backend';
-import ReactDOM from 'react-dom';
 import { initReactI18next } from 'react-i18next';
 import { Environment } from '@ovh-ux/manager-config/types';
 
@@ -46,7 +46,8 @@ initShell().then((shell) => {
           },
         });
 
-      ReactDOM.render(
+      const root = createRoot(document.querySelector('#app'));
+      root.render(
         <React.StrictMode>
           <ApplicationProvider environment={environment} shell={shell}>
             <ContainerProvider>
@@ -54,7 +55,6 @@ initShell().then((shell) => {
             </ContainerProvider>
           </ApplicationProvider>
         </React.StrictMode>,
-        document.querySelector('#app'),
       );
     });
 });

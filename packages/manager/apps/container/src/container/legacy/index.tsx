@@ -35,8 +35,20 @@ function LegacyContainer(): JSX.Element {
   }, [iframeRef]);
 
   useEffect(() => {
-    const routing = plugin.routing.initRouting(shell, iframeRef.current);
     const tracking = shell.getPlugin('tracking');
+    if (betaVersion) {
+      tracking.trackMVTest({
+        test: '[product-navigation-reshuffle]',
+        waveId: 1,
+        creation: '[old-nav]',
+      });
+    }
+  }, []);
+
+  useEffect(() => {
+    if (shell.getPlugin('routing')) return;
+
+    const routing = plugin.routing.initRouting(shell, iframeRef.current);
 
     // Hub application redirections
     routing.addRoute(
@@ -98,13 +110,6 @@ function LegacyContainer(): JSX.Element {
 
     shell.registerPlugin('routing', routing);
     setRouter(routing.router);
-    if (betaVersion) {
-      tracking.trackMVTest({
-        test: '[product-navigation-reshuffle]',
-        waveId: 1,
-        creation: '[old-nav]',
-      });
-    }
   }, [iframeRef, shell]);
 
   return (

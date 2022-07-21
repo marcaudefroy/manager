@@ -53,6 +53,8 @@ function NavReshuffleContainer(): JSX.Element {
   }, [iframeRef]);
 
   useEffect(() => {
+    if (shell.getPlugin('routing')) return;
+
     const routing = plugin.routing.initRouting(shell, iframeRef.current);
 
     // Hub application redirections
